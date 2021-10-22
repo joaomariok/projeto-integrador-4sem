@@ -1,16 +1,29 @@
-const keys = require("./keys");
-
 // Express app setup
 const express = require("express");
 const cors = require("cors");
 
+const database = require('./db');
+const Paciente = require('./models/paciente');
+const Atendimento = require('./models/atendimento');
+const Prontuario = require('./models/prontuario');
+
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }));
+
+(async () => {
+    try {
+        const resultado = await database.sync({ force: true });
+        console.log(resultado);
+    } catch (error) {
+        console.log(error);
+    }
+})();
 
 // Connection to mysql database
-const mysql = require("mysql");
+/*const mysql = require("mysql");
+const keys = require("./keys");
 
 function createConnectionToDatabase() {
     return mysql.createConnection({
@@ -82,7 +95,7 @@ app.get("/tables", (req, res) => {
         res.json(result);
     });
 });
-
+*/
 app.listen(5000, (err) => {
     console.log("Listening on port 5000");
 });
