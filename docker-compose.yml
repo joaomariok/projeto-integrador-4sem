@@ -59,11 +59,9 @@ services:
     restart: always
     build:
       dockerfile: Dockerfile.dev
-      # context: ./client
-      context: ./webclient
+      context: ./client
     volumes:
       - /app/node_modules
-      # - ./client:/app
-      - ./webclient:/app
+      - ./client:/app
     environment:
       - CHOKIDAR_USEPOLLING=true
