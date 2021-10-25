@@ -1,74 +1,49 @@
-const keys = require("./keys");
-
-// Express app setup
+// Imports
 const express = require("express");
 const cors = require("cors");
+const { sleep, RETRY_CONNECTION_TIMER, MAX_CONNECTION_RETRY_COUNT } = require("./helper")
 
+// Data base imports
+const database = require('./db');
+const Paciente = require('./models/paciente');
+const Atendimento = require('./models/atendimento');
+const Prontuario = require('./models/prontuario');
+
+// Express definitions
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({ extended: false }));
 
-// Connection to mysql database
-const mysql = require("mysql");
-
-function createConnectionToDatabase() {
-    return mysql.createConnection({
-        host: keys.mysqlHost,
-        user: keys.mysqlUser,
-        password: keys.mysqlPass,
-        database: keys.mysqlName,
-        port: keys.mysqlPort
-    });
-}
-
-let connection = createConnectionToDatabase();
+// Global variables
 let isConnected = false;
 
-const connectInterval = setInterval(() => {
-    if (!isConnected) {
-        connection.connect((err) => {
-            if (err) {
-                console.log(`Waiting for connection: ${err}`);
-                isConnected = false;
-                connection.end();
-                connection = createConnectionToDatabase();
-            }
-            else {
-                console.log("Connected to database!");
-                isConnected = true;
-                clearInterval(connectInterval);
-            }
-        });
+// Connection to database
+async function trySyncDatabase() {
+    try {
+        const resultado = await database.sync({ force: true });
+        console.log("[DB] Database synchronized!");
+        console.log(resultado.models);
+    } catch (err) {
+        console.log(err);
     }
-}, 10000);
+}
 
-app.post("/retry-connection", (req, res) => {
-    const { password } = req.body;
-
-    if (password != keys.mysqlPass) {
-        return res.status(401).send({ 
-            Error: "Wrong database password" 
-        });
-    }
-
-    connection.end();
-    connection = createConnectionToDatabase();
-    connection.connect((err) => {
-        if (err) {
-            console.log(`Couldn't connect to database: ${err}`);
-            isConnected = false;
-        }
-        else {
-            console.log("Connected to database!");
+(async () => {
+    for (retryNumber = 0; retryNumber < MAX_CONNECTION_RETRY_COUNT; retryNumber++) {
+        try {
+            await database.authenticate();
+            console.log("[DB] Connected to database!");
+            await trySyncDatabase();
             isConnected = true;
+            break;
+        } catch(err) {
+            console.log(`[DB] Retrying connection to database: ${retryNumber}/${MAX_CONNECTION_RETRY_COUNT}`);
+            console.log(err.parent);
+            await sleep(RETRY_CONNECTION_TIMER);
         }
-    })
-
-    return res.status(isConnected ? 200 : 503).send({
-        "IsConnected": isConnected,
-    });
-});
+    }
+})();
 
 // Express route handlers
 app.get("/", (req, res) => {
@@ -76,10 +51,13 @@ app.get("/", (req, res) => {
 });
 
 app.get("/tables", (req, res) => {
+    if (!isConnected) return res.status(502);
+
     sqlQuery = "SHOW TABLES";
-    connection.query(sqlQuery, (err, result) => {
-        if (err) throw err;
-        res.json(result);
+    database
+        .query(sqlQuery)
+        .then((result) => {
+            res.json(result);
     });
 });
 
