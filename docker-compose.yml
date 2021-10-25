@@ -26,6 +26,8 @@ services:
       - api
       - client
     restart: always
+    logging:
+      driver: none
     build:
       dockerfile: Dockerfile.dev
       context: ./router
@@ -54,11 +56,14 @@ services:
 
   client:
     stdin_open: true
+    restart: always
     build:
       dockerfile: Dockerfile.dev
-      context: ./client
+      # context: ./client
+      context: ./webclient
     volumes:
       - /app/node_modules
-      - ./client:/app
+      # - ./client:/app
+      - ./webclient:/app
     environment:
       - CHOKIDAR_USEPOLLING=true
