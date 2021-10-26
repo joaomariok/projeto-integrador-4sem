@@ -1,0 +1,65 @@
+.loginWrapper {
+    
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .loginBox {
+
+        background-color: #202024;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        h1 {
+            margin: 30px 0;
+        }
+        
+        form {
+
+            padding: 0 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            
+            * {
+                font-size: 14px;
+                height: 40px;
+                width: 400px;
+                outline: none;
+                border: none;
+                
+                &:hover {
+                    filter: brightness(0.9);
+                }
+            }
+            
+            input {
+                margin-bottom: 10px;
+                padding: 0 15px;
+            }
+            
+            button {
+                font-size: 16px;
+                text-transform: uppercase;
+                background-color: #FFCD1E;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        }
+        
+        a {
+            text-decoration: none;
+            color: #8D8D99;
+            margin: 10px auto;
+            
+            &:hover {
+                filter: brightness(0.9);
+            }
+        }
+    }
+}

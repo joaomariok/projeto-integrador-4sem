@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const database = require('../db');
+const database = require('../database');
 
 const Prontuario = database.define('prontuario', {
     id: {

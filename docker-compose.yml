@@ -26,6 +26,8 @@ services:
       - api
       - client
     restart: always
+    logging:
+      driver: none
     build:
       dockerfile: Dockerfile.dev
       context: ./router
@@ -49,11 +51,14 @@ services:
       - MYSQL_PASS=$DB_PASS
       - MYSQL_NAME=$DB_NAME
       - MYSQL_PORT=$DB_PORT
+      - ROOT_USER=$ROOT_USERNAME
+      - ROOT_PASS=$ROOT_PASSWORD
     stdin_open: true
     tty: true
 
   client:
     stdin_open: true
+    restart: always
     build:
       dockerfile: Dockerfile.dev
       context: ./client
