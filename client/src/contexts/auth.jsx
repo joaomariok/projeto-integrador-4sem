@@ -5,7 +5,6 @@ const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
-    const [signed, setSigned] = useState(false);
 
     useEffect(() => {
         const storageUser = localStorage.getItem('@Dashboard:user');
@@ -17,14 +16,19 @@ export const AuthProvider = ({ children }) => {
         }
     }, []);
 
-    async function Login() {
+    async function Login(inputs) {
+        const { user, password } = inputs;
+        if (!user || !password) return;
+
         const response = await api.post('/login', {
-            // Get from <form />
-            user: 'userexample',
-            password: '123456',
+            user: inputs.user,
+            password: inputs.password,
         });
         
         // Check for unauthorized
+        if (response.status == 401 || response.status == 404) {
+            Logout();
+        }
 
         setUser(response.data.user);
         api.defaults.headers.Authorization = `Bearer ${response.data.token}`;
@@ -34,10 +38,10 @@ export const AuthProvider = ({ children }) => {
     }
 
     function Logout() {
+        localStorage.removeItem('@Dashboard:user');
+        localStorage.removeItem('@Dashboard:token');
+        
         setUser(null);
-
-        sessionStorage.removeItem('@Dashboard:user');
-        sessionStorage.removeItem('@Dashboard:token');
     }
 
     return (

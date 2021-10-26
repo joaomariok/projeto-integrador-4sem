@@ -1,10 +1,10 @@
-import { AuthProvider } from "./contexts/auth";
 import { Routes } from "./routes";
+import styles from './App.module.scss';
 
 export function App() {
   return (
-    <AuthProvider>
+    <main className={styles.contentWrapper}>
       <Routes />
-    </AuthProvider>
+    </main>
   );
 }

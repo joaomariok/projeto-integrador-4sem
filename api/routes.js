@@ -36,6 +36,11 @@ router.get("/database-connected", ensureAuthenticated, (req, res) => {
 router.post("/signup", async (req, res) => {
     const { user, password, rootPassword } = req.body;
 
+    // Check empty fields
+    if (!user || !password || !rootPassword) {
+        return res.status(400).json();
+    }
+
     // Check root password
     if (md5(rootPassword) != md5(process.env.ROOT_PASS)) return res.status(401).json();
 
@@ -78,6 +83,9 @@ router.post("/signup", async (req, res) => {
 
 router.post("/login", async (req, res) => {
     const { user, password } = req.body;
+
+    // Check empty fields
+    if (!user || !password) return res.status(400).json();
 
     // Check in database
     const userInDatabase = await Usuario.findOne({
