@@ -31,7 +31,7 @@ export function Login() {
     return (
         <div className={styles.loginWrapper}>
             <div className={styles.loginBox}>
-                <h1>Log In</h1>
+                <h1>Login</h1>
                 <form onSubmit={handleSubmit}>
                     <input 
                         type="text" 
@@ -47,7 +47,7 @@ export function Login() {
                         value={inputs.password || ""} 
                         onChange={handleChange}
                     />
-                    <button type="submit">Log In</button>
+                    <button type="submit">Login</button>
                 </form>
                 <a href="#">Cadastrar novo usuário</a>
             </div>
