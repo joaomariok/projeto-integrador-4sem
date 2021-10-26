@@ -1,9 +1,7 @@
-// const { verify } = require("jsonwebtoken");
+const { verify } = require("jsonwebtoken");
 
 function ensureAuthenticated(request, response, next) {
     const authToken = request.headers.authorization;
-
-    console.log(authToken);
 
     if (!authToken) {
         return response.status(401).json({
@@ -11,14 +9,12 @@ function ensureAuthenticated(request, response, next) {
         });
     }
 
-    // Bearer no_token
-
-    const [ , token ] = authToken.split(" ");
+    const [ bearer , token ] = authToken.split(" ");
 
     try {
-        // const { sub } = verify(token, process.env.JWT_SECRET);
+        const { subject } = verify(token, process.env.JWT_SECRET);
 
-        // request.user_id = sub;
+        request.username = subject;
 
         return next();
     }

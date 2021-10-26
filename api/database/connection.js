@@ -1,5 +1,6 @@
 const { sleep } = require("./helper");
 const database = require('.');
+const md5 = require("md5");
 
 // Import models
 const Paciente = require('../models/paciente');
@@ -15,6 +16,24 @@ let isConnected = false;
 
 function isDatabaseConnected() {
     return isConnected;
+}
+
+async function createRootUser() {
+    const userInDatabase = await Usuario.findOne({
+        where: {
+            username: process.env.ROOT_USER,
+        }
+    });
+
+    if (Boolean(userInDatabase)) return;
+
+    console.log(process.env.ROOT_PASS);
+    console.log(md5(process.env.ROOT_PASS));
+
+    const rootUser = await Usuario.create({
+        username: process.env.ROOT_USER,
+        password: md5(process.env.ROOT_PASS),
+    });
 }
 
 // Connection to database
@@ -35,6 +54,7 @@ async function tryDatabaseConnection() {
             console.log("[DB] Connected to database!");
             await trySyncDatabase();
             isConnected = true;
+            await createRootUser();
             break;
         } catch(err) {
             console.log(`[DB] Retrying connection to database: ${retryNumber}/${MAX_CONNECTION_RETRY_COUNT}`);
