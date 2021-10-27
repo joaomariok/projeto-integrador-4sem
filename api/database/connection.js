@@ -27,9 +27,6 @@ async function createRootUser() {
 
     if (Boolean(userInDatabase)) return;
 
-    console.log(process.env.ROOT_PASS);
-    console.log(md5(process.env.ROOT_PASS));
-
     const rootUser = await Usuario.create({
         username: process.env.ROOT_USER,
         password: md5(process.env.ROOT_PASS),
