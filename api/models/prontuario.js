@@ -9,16 +9,16 @@ const Prontuario = database.define('prontuario', {
         primaryKey: true
     },
     sintomas: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
     },
     veioAObito: {
         type: Sequelize.BOOLEAN,
     },
     transferencia: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
     },
     gravidade: {
-        type: Sequelize.STRING(6)
+        type: Sequelize.STRING(6),
     },
     possuiComorbidades: {
         type: Sequelize.BOOLEAN,

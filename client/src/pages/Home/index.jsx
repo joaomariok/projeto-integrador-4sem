@@ -1,25 +1,15 @@
 import React from "react";
-import { useAuth } from "../../contexts/auth";
+import { Link } from "react-router-dom";
 
 import styles from './styles.module.scss'
 
 export function Home() {
-    const { Logout } = useAuth();
-
-    async function handleLogout() {
-        Logout();
-    }
-
     return (
         <div className={styles.homeWrapper}>
-            <header className={styles.homeHeader}>
-                <h1>
-                    <a href="">Logo</a>
-                </h1>
-                <button onClick={handleLogout}>Logout</button>
-            </header>
             <div className={styles.dashboardWrapper}>
                 <h1>Home</h1>
+                <Link to="/dummy1">Dummy1</Link>
+                <Link to="/dummy2">Dummy2</Link>
             </div>
         </div>
     );

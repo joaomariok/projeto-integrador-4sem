@@ -1,0 +1,41 @@
+.defaultHeader {
+    background-color: #202024;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+        margin-left: 20px;
+
+        .headerLogo {
+            text-decoration: none;
+            color: #E1E1E6;
+            margin: 10px auto;
+            
+            &:hover {
+                filter: brightness(0.9);
+            }
+        }
+    }
+    
+    button {
+        height: 30px;
+        width: 100px;
+        margin-right: 20px;
+
+        outline: none;
+        border: none;
+        
+        font-size: 14px;
+        text-transform: uppercase;
+        background-color: #FFCD1E;
+        font-weight: bold;
+        cursor: pointer;
+        
+        &:hover {
+            filter: brightness(0.9);
+        }
+    }
+}

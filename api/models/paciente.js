@@ -6,15 +6,15 @@ const Paciente = database.define('paciente', {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
     },
     idade: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
     },
     genero: {
         type: Sequelize.STRING(1),
-        allowNull: false
+        allowNull: false,
     },
     multiplicidade: {
         type: Sequelize.INTEGER,
