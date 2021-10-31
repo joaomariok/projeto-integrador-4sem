@@ -8,15 +8,15 @@ const Atendimento = database.define('atendimento', {
         type: Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
-        primaryKey: true
+        primaryKey: true,
     },
     horaEntrada: {
         type: Sequelize.TIME,
-        allowNull: false
+        allowNull: false,
     },
     horaSaida: {
         type: Sequelize.TIME,
-        allowNull: false
+        allowNull: false,
     },
     permanencia: {
         type: Sequelize.TIME,
@@ -25,14 +25,14 @@ const Atendimento = database.define('atendimento', {
         type: Sequelize.INTEGER,
         references: {
             model: Paciente,
-            key: 'id'
+            key: 'id',
         }
     },
     prontuario_id: {
         type: Sequelize.INTEGER,
         references: {
             model: Prontuario,
-            key: 'id'
+            key: 'id',
         }
     }
 })
