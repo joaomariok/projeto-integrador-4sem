@@ -14,8 +14,16 @@ export function Header() {
     return (
         <header className={styles.defaultHeader}>
             <h1>
-                <Link to="/" className={styles.headerLogo}>Logo</Link>
+                <Link to="/" className={styles.headerLogo}>Home</Link>
             </h1>
+            <div className={styles.itemWrapper}>
+                <h1>
+                    <Link to="/cadastro" className={styles.headerItem}>Cadastro</Link>
+                </h1>
+                <h1>
+                    <Link to="/dummy2" className={styles.headerItem}>Dummy 2</Link>
+                </h1>
+            </div>
             <button onClick={handleLogout}>Logout</button>
         </header>
     );

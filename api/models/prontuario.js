@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const database = require('../database');
+const Paciente = require('./paciente');
 
 const Prontuario = database.define('prontuario', {
     id: {
@@ -8,6 +9,13 @@ const Prontuario = database.define('prontuario', {
         allowNull: false,
         primaryKey: true
     },
+    paciente_id: {
+      type: Sequelize.INTEGER,
+      references: {
+          model: Paciente,
+          key: 'id',
+      }
+    },  
     sintomas: {
         type: Sequelize.TEXT,
     },
