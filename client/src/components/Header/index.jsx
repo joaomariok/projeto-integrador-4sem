@@ -17,12 +17,12 @@ export function Header() {
                 <Link to="/" className={styles.headerLogo}>Home</Link>
             </h1>
             <div className={styles.itemWrapper}>
-                <h1>
+                <h2>
                     <Link to="/cadastro" className={styles.headerItem}>Cadastro</Link>
-                </h1>
-                <h1>
+                </h2>
+                <h2>
                     <Link to="/dummy2" className={styles.headerItem}>Dummy 2</Link>
-                </h1>
+                </h2>
             </div>
             <button onClick={handleLogout}>Logout</button>
         </header>

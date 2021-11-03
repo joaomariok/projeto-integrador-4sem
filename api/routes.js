@@ -17,7 +17,7 @@ const router = Router();
 // ==== Database routes ====
 
 router.get("/tables", ensureAuthenticated, (req, res) => {
-  if (!isDatabaseConnected()) return res.status(502);
+  if (!isDatabaseConnected()) return res.status(502).json();
 
   sqlQuery = "SHOW TABLES";
   database
@@ -29,6 +29,53 @@ router.get("/tables", ensureAuthenticated, (req, res) => {
 
 router.get("/database-connected", ensureAuthenticated, (req, res) => {
   res.json(isDatabaseConnected() ? "Banco conectado" : "Não foi possível realizar conexão");
+});
+
+router.post("/new-record", ensureAuthenticated, async (req, res) => {
+  if (!isDatabaseConnected()) return res.status(502).json();
+
+  const {
+    identMultiplicidade,
+    entrada,
+    saida,
+    idade,
+    sexo,
+    covid,
+    gravidade,
+    sintoma,
+    comorbidade,
+    obito,
+    unidade
+  } = req.body;
+
+  console.log(req.body);
+
+  // try-catch?
+  
+  // const paciente = await Paciente.create({
+  //   idade: idade,
+  //   genero: sexo,
+  //   multiplicidade: identMultiplicidade
+  // });
+
+  // const prontuario = await Prontuario.create({
+  //   paciente_id: paciente.id,
+  //   sintomas: sintoma,
+  //   veioAObito: obito,
+  //   transferencia: unidade,
+  //   gravidade: gravidade,
+  //   possuiComorbidades: comorbidade
+  // });
+  
+  // const atendimento = Atendimento.create({
+  //   horaEntrada: entrada,
+  //   horaSaida: saida,
+  //   permanencia: permanencia, // pegar pela hora de saida menos a de entrada
+  //   paciente_id: paciente.id,
+  //   prontuario_id: prontuario.id
+  // });
+
+  res.status(200).json();
 });
 
 // ==== Login routes ====
@@ -120,47 +167,5 @@ router.post("/login", async (req, res) => {
 
   res.status(200).json(response);
 });
-
-// router.post("/novosregistros", async (req, res) => {
-//   const {
-//     identMultiplicidade,
-//     entrada,
-//     saida,
-//     permanencia,
-//     idade,
-//     sexo,
-//     covid,
-//     gravidade,
-//     sintoma,
-//     comorbidade,
-//     obito,
-//     unidade
-//   } = req.body;
-
-//   const paciente = await Paciente.create({
-//     idade: idade,
-//     genero: sexo,
-//     multiplicidade: identMultiplicidade
-//   })
-
-//   const prontuario = await Prontuario.create({
-//     paciente_id: paciente.id,
-//     sintomas: sintoma,
-//     veioAObito: obito,
-//     transferencia: unidade,
-//     gravidade: gravidade,
-//     possuiComorbidades: comorbidade
-//   })
-  
-//   const atendimento = Atendimento.create({
-//     horaEntrada: entrada,
-//     horaSaida: saida,
-//     permanencia: permanencia,
-//     paciente_id: paciente.id,
-//     prontuario_id: prontuario.id
-//   })
-
-//   res.status(200).json()
-// })
 
 module.exports = { router }

@@ -1,14 +1,13 @@
-import axios from 'axios';
 import React, { useState } from 'react';
 import api from '../../services/api';
 import styles from './styles.module.scss'
 
 export function Cadastro() {
-  const [formdata, setFormData] = useState({
+  const [formData, setFormData] = useState({
     identMultiplicidade: '',
     entrada: '',
     saida: '',
-    permanencia: '',
+    // permanencia: '',
     idade: '',
     sexo: 'notinfo',
     covid: 'covidNao',
@@ -20,7 +19,7 @@ export function Cadastro() {
   })
 
   const checkValues = () => {
-    if (formdata.idade < 0) {
+    if (formData.idade < 0) {
       alert('A idade tem que ser maior que 0')
       return
     }
@@ -35,7 +34,7 @@ export function Cadastro() {
       identMultiplicidade: '',
       entrada: '',
       saida: '',
-      permanencia: '',
+      // permanencia: '',
       idade: '',
       sexo: 'notinfo',
       covid: 'covidNao',
@@ -48,32 +47,38 @@ export function Cadastro() {
   }
 
   async function sendForm(e) {
-    e.preventDefault() // remove this line
-    checkValues()
-    let response
-    var data = {
-      identMultiplicidade: formdata.identMultiplicidade,
-      entrada: formdata.entrada,
-      saida: formdata.saida,
-      permanencia: formdata.permanencia,
-      idade: formdata.idade,
-      sexo: formdata.sexo,
-      covid: formdata.covid,
-      gravidade: formdata.gravidade,
-      sintoma: formdata.sintoma,
-      comorbidade: formdata.comorbidade,
-      obito: formdata.obito,
-      unidade: formdata.unidade
+    e.preventDefault();
+    checkValues();
+
+    const newRecord = {
+      identMultiplicidade: formData.identMultiplicidade,
+      entrada: formData.entrada,
+      saida: formData.saida,
+      // permanencia: formData.permanencia,
+      idade: formData.idade,
+      sexo: formData.sexo,
+      covid: formData.covid,
+      gravidade: formData.gravidade,
+      sintoma: formData.sintoma,
+      comorbidade: formData.comorbidade,
+      obito: formData.obito,
+      unidade: formData.unidade
     }
-    try {
-      response = await api.post('/novosregistros', JSON.stringify(data))
-    } catch (e) {
-      alert('aconteceu um erro')
-      return
+
+    const response = await api.post('/new-record', newRecord);
+    
+    // Check for unauthorized
+    if (response.status == 401 || response.status == 404 || response.status == 502) {
+      alert(`Erro ao enviar novo registro\n[status: ${response.status}]`);
+    }
+    else if (response.status == 200) {
+      alert("Novo registro salvo com sucesso");
+    }
+    else {
+      alert("Status não reconhecido");
     }
 
     clearForm()
-    console.log(response.statusText)
   }
 
   return (
@@ -85,8 +90,8 @@ export function Cadastro() {
         <input
           type="text"
           className={styles.input}
-          onChange={(e) => setFormData({ ...formdata, identMultiplicidade: e.target.value })}
-          value={formdata.identMultiplicidade}
+          onChange={(e) => setFormData({ ...formData, identMultiplicidade: e.target.value })}
+          value={formData.identMultiplicidade}
         />
         <div className={styles.line} />
 
@@ -96,8 +101,8 @@ export function Cadastro() {
         <input
           type="datetime-local"
           className={styles.input}
-          onChange={(e) => setFormData({ ...formdata, entrada: e.target.value })}
-          value={formdata.entrada}
+          onChange={(e) => setFormData({ ...formData, entrada: e.target.value })}
+          value={formData.entrada}
         />
         <div className={styles.line} />
 
@@ -107,21 +112,21 @@ export function Cadastro() {
         <input
           type="datetime-local"
           className={styles.input}
-          onChange={(e) => setFormData({ ...formdata, saida: e.target.value })}
-          value={formdata.saida}
+          onChange={(e) => setFormData({ ...formData, saida: e.target.value })}
+          value={formData.saida}
         />
         <div className={styles.line} />
 
-        <label className={styles.label}>
+        {/* <label className={styles.label}>
           Tempo de permanência:
         </label>
         <input
           type="time"
           className={styles.input}
-          onChange={(e) => setFormData({ ...formdata, permanencia: e.target.value })}
-          value={formdata.permanencia}
+          onChange={(e) => setFormData({ ...formData, permanencia: e.target.value })}
+          value={formData.permanencia}
         />
-        <div className={styles.line} />
+        <div className={styles.line} /> */}
 
         <label className={styles.label}>
           Idade:
@@ -129,15 +134,15 @@ export function Cadastro() {
         <input
           type="number"
           className={styles.input}
-          onChange={(e) => setFormData({ ...formdata, idade: e.target.value })}
-          value={formdata.idade}
+          onChange={(e) => setFormData({ ...formData, idade: e.target.value })}
+          value={formData.idade}
         />
         <div className={styles.line} />
 
         <label className={styles.label}>
           Sexo:
         </label>
-        <div onChange={(e) => setFormData({ ...formdata, sexo: e.target.value })}>
+        <div onChange={(e) => setFormData({ ...formData, sexo: e.target.value })}>
           <label className={styles.radioLabel} htmlFor="masc">
             <input id="masc" type="radio" value="m" name="sexo" className={styles.radioButton} />
             Masculino
@@ -156,7 +161,7 @@ export function Cadastro() {
         <label className={styles.label}>
           Vacinado COVID?
         </label>
-        <select className={styles.select} onChange={(e) => setFormData({ ...formdata, covid: e.target.value })} value={formdata.covid}>
+        <select className={styles.select} onChange={(e) => setFormData({ ...formData, covid: e.target.value })} value={formData.covid}>
           <option className={styles.option} value="covid2dose">2ª DOSE</option>
           <option className={styles.option} value="covid1dose">1ª DOSE</option>
           <option className={styles.option} value="covidIndefinido">INDEFINIDO</option>
@@ -167,7 +172,7 @@ export function Cadastro() {
         <label className={styles.label}>
           Gravidade:
         </label>
-        <select className={styles.select} onChange={(e) => setFormData({ ...formdata, gravidade: e.target.value })} value={formdata.gravidade}>
+        <select className={styles.select} onChange={(e) => setFormData({ ...formData, gravidade: e.target.value })} value={formData.gravidade}>
           <option className={styles.option} value="gravidadeBaixa">BAIXA</option>
           <option className={styles.option} value="gravidadeMedia">MÉDIA</option>
           <option className={styles.option} value="gravidadeAlta">ALTA</option>
@@ -180,15 +185,15 @@ export function Cadastro() {
         <input
           type="text"
           className={styles.input}
-          onChange={(e) => setFormData({ ...formdata, sintoma: e.target.value })}
-          value={formdata.sintoma}
+          onChange={(e) => setFormData({ ...formData, sintoma: e.target.value })}
+          value={formData.sintoma}
         />
         <div className={styles.line} />
 
         <label className={styles.label}>
           Possui comorbidades?
         </label>
-        <select className={styles.select} onChange={(e) => setFormData({ ...formdata, comorbidade: e.target.value })} value={formdata.comorbidade}>
+        <select className={styles.select} onChange={(e) => setFormData({ ...formData, comorbidade: e.target.value })} value={formData.comorbidade}>
           <option className={styles.option} value="comobirdadesDesconhecido">DESCONHECIDO</option>
           <option className={styles.option} value="comobirdadesNao">NÃO</option>
           <option className={styles.option} value="comobirdadesSim">SIM</option>
@@ -198,7 +203,7 @@ export function Cadastro() {
         <label className={styles.label}>
           Obito dentro da unidade?
         </label>
-        <select className={styles.select} onChange={(e) => setFormData({ ...formdata, obito: e.target.value })} value={formdata.obito}>
+        <select className={styles.select} onChange={(e) => setFormData({ ...formData, obito: e.target.value })} value={formData.obito}>
           <option className={styles.option} value={false}>NÃO</option>
           <option className={styles.option} value={true}>SIM</option>
         </select>
@@ -210,8 +215,8 @@ export function Cadastro() {
         <input
           type="text"
           className={styles.input}
-          onChange={(e) => setFormData({ ...formdata, unidade: e.target.value })}
-          value={formdata.unidade}
+          onChange={(e) => setFormData({ ...formData, unidade: e.target.value })}
+          value={formData.unidade}
         />
         <div className={styles.line} />
         <button
