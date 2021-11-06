@@ -19,7 +19,26 @@
             }
         }
     }
-    
+
+    .itemWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .headerItem {
+            text-decoration: none;
+            font-size: medium;
+            color: #E1E1E6;
+            margin: 0 10px;
+        
+            &:hover {
+                filter: brightness(0.9);
+                border-bottom: 1px solid #E1E1E6;
+            }
+        }
+    }
+
     button {
         height: 30px;
         width: 100px;
