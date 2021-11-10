@@ -3,10 +3,10 @@ const md5 = require("md5");
 const { sign } = require("jsonwebtoken");
 
 const { ensureAuthenticated } = require("./middleware/ensureAuthenticated");
-const database = require('./database');
 const { isDatabaseConnected } = require('./database/connection');
 
 // Import models
+const database = require('./database');
 const Paciente = require('./models/paciente');
 const Atendimento = require('./models/atendimento');
 const Prontuario = require('./models/prontuario');
@@ -33,7 +33,7 @@ router.get("/database-connected", ensureAuthenticated, (req, res) => {
 
 router.post("/new-record", ensureAuthenticated, async (req, res) => {
   if (!isDatabaseConnected()) return res.status(502).json();
-
+  
   const {
     identMultiplicidade,
     entrada,
@@ -76,6 +76,31 @@ router.post("/new-record", ensureAuthenticated, async (req, res) => {
   // });
 
   res.status(200).json();
+}); 
+
+router.get("/permanence", ensureAuthenticated, async (req, res) => {
+  if (!isDatabaseConnected()) return res.status(502).json();
+
+  // const query = "SELECT TIMESTAMPDIFF(MINUTE, horaEntrada, horaSaida) AS permanencia FROM atendimentos AS atendimento"
+  // const [ data, temp ] = await database.query(query);
+
+  const data = await Atendimento.findAll({
+    attributes: [
+      [
+        database.fn(
+          'TIMESTAMPDIFF', 
+          database.literal('MINUTE'), 
+          database.col('horaEntrada'),
+          database.col('horaSaida'), 
+        ),
+        'permanencia'
+      ]
+    ]
+  });
+
+  console.log(data);
+
+  res.status(200).json(data);
 });
 
 // ==== Login routes ====
