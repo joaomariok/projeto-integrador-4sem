@@ -1,0 +1,31 @@
+.contentWrapper {
+    // height: 100vh;
+    // width: 1680px;
+    width: 70%;
+    // height: 45%;
+    min-width: 900px;
+    margin: auto;
+    padding: 10px 20px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+        margin: 20px auto;
+    }
+
+    table {
+        width: 40%;
+        margin-bottom: 20px;
+
+        td {
+            text-align: left;
+
+            &:nth-child(3) {
+                text-align: right;
+            }
+        }
+    }
+}

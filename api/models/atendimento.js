@@ -11,15 +11,12 @@ const Atendimento = database.define('atendimento', {
         primaryKey: true,
     },
     horaEntrada: {
-        type: Sequelize.TIME,
+        type: Sequelize.DATE,
         allowNull: false,
     },
     horaSaida: {
-        type: Sequelize.TIME,
+        type: Sequelize.DATE,
         allowNull: false,
-    },
-    permanencia: {
-        type: Sequelize.TIME,
     },
     paciente_id: {
         type: Sequelize.INTEGER,
