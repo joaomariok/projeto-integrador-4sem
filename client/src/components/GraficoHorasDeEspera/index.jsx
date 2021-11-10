@@ -58,7 +58,7 @@ export function GraficoHorasDeEspera() {
         const hours = Math.floor(min / 60);
         const minutes = Math.round(min % 60);
 
-        return `${hours}h${minutes}min`;
+        return `${hours}h ${minutes}min`;
     }
 
     useEffect(async () => {
@@ -68,14 +68,14 @@ export function GraficoHorasDeEspera() {
         setValores(listOfValues);
         console.log(listOfValues);
 
-        const testListOfValues = [2, 5, 10, 360, 450, 590, 600, 900, 1300, 1400, 2000, 3000, 4000];
-        const listOfRanges = getListOfRanges(testListOfValues);
-        // const listOfRanges = getListOfRanges(listOfValues);
+        // const testListOfValues = [2, 5, 10, 360, 450, 590, 600, 900, 1300, 1400, 2000, 3000, 4000];
+        // const listOfRanges = getListOfRanges(testListOfValues);
+        const listOfRanges = getListOfRanges(listOfValues);
         setPermanencias(listOfRanges)
         console.log(permanencias);
 
-        setMedia(getAverageWaitingTime(testListOfValues));
-        // setMedia(getAverageWaitingTime(listOfValues));
+        // setMedia(getAverageWaitingTime(testListOfValues));
+        setMedia(getAverageWaitingTime(listOfValues));
         console.log(media);
     }, []);
 

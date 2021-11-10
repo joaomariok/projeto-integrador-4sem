@@ -16,7 +16,16 @@
         margin: 20px auto;
     }
 
-    h2 {
+    table {
+        width: 40%;
         margin-bottom: 20px;
+
+        td {
+            text-align: left;
+
+            &:nth-child(3) {
+                text-align: right;
+            }
+        }
     }
 }

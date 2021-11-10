@@ -52,6 +52,7 @@ services:
       - ROOT_USER=$ROOT_USERNAME
       - ROOT_PASS=$ROOT_PASSWORD
       - JWT_SECRET=$JWT_SECRET
+      - DEBUG=true
 
   client:
     restart: always

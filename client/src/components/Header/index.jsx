@@ -24,7 +24,7 @@ export function Header() {
                     <Link to="/grafico/horasdeespera" className={styles.headerItem}>Horas de espera</Link>
                 </h2>
                 <h2>
-                    <Link to="/dummy2" className={styles.headerItem}>Dummy 2</Link>
+                    <Link to="/grafico/permaneciaporgravidade" className={styles.headerItem}>Permanecia por Gravidade</Link>
                 </h2>
             </div>
             <button onClick={handleLogout}>Logout</button>
