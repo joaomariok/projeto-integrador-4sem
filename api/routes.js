@@ -23,6 +23,7 @@ router.get("/tables", ensureAuthenticated, (req, res) => {
   database
     .query(sqlQuery)
     .then((result) => {
+      console.log("GET /tables");
       res.json(result);
     });
 });
@@ -98,7 +99,7 @@ router.get("/permanence", ensureAuthenticated, async (req, res) => {
     ]
   });
 
-  console.log(data);
+  console.log("GET /permanence");
 
   res.status(200).json(data);
 });
@@ -116,7 +117,7 @@ router.get("/severityyandpermanence", ensureAuthenticated, async (req, res) => {
   const query = "SELECT TIMESTAMPDIFF(MINUTE, atendimentos.horaEntrada, atendimentos.horaSaida) AS permanencia, prontuarios.gravidade AS gravidade FROM atendimentos INNER JOIN prontuarios ON atendimentos.prontuario_id = prontuarios.id"
   const [ data, temp ] = await database.query(query);
 
-  console.log(data);
+  console.log("GET /severityyandpermanence");
 
   res.status(200).json(data);
 });

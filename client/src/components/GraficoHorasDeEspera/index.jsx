@@ -66,17 +66,14 @@ export function GraficoHorasDeEspera() {
 
         const listOfValues = response.data.map((i) => i.permanencia);
         setValores(listOfValues);
-        console.log(listOfValues);
 
         // const testListOfValues = [2, 5, 10, 360, 450, 590, 600, 900, 1300, 1400, 2000, 3000, 4000];
         // const listOfRanges = getListOfRanges(testListOfValues);
         const listOfRanges = getListOfRanges(listOfValues);
-        setPermanencias(listOfRanges)
-        console.log(permanencias);
+        setPermanencias(listOfRanges);
 
         // setMedia(getAverageWaitingTime(testListOfValues));
         setMedia(getAverageWaitingTime(listOfValues));
-        console.log(media);
     }, []);
 
     const data = {
