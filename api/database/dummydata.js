@@ -12,6 +12,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Alta a pedido",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -31,6 +32,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -50,6 +52,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "H.P. Caibar Schutel",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -69,6 +72,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa Descalvado",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -88,6 +92,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa Descalvado",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -107,6 +112,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -126,6 +132,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -145,6 +152,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -164,6 +172,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa Descalvado",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -181,8 +190,9 @@ const dummyData =
         prontuario: {
             sintomas: "Síndrome gripal",
             veioAObito: true,
-            transferencia: "false se aplica",
+            transferencia: "Não se aplica",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -202,6 +212,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Alta médica",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -221,6 +232,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "H.E. Américo Brasiliense",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -240,6 +252,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Alta médica",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -259,6 +272,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -278,6 +292,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa Descalvado",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -297,6 +312,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Alta médica",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -314,8 +330,9 @@ const dummyData =
         prontuario: {
             sintomas: "Síndrome gripal",
             veioAObito: true,
-            transferencia: "false se aplica",
+            transferencia: "Não se aplica",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -335,6 +352,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -354,6 +372,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Alta médica",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -373,6 +392,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Alta médica",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -392,6 +412,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -411,6 +432,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -430,6 +452,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -449,6 +472,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -468,6 +492,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "H.E. Américo Brasiliense",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -487,6 +512,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "H.E. Américo Brasiliense",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -506,6 +532,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa Descalvado",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -525,6 +552,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -544,6 +572,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -563,6 +592,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "H.E. Américo Brasiliense",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -582,6 +612,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -601,6 +632,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -620,6 +652,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "H.E. Américo Brasiliense",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -639,6 +672,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -658,6 +692,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -677,6 +712,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -696,6 +732,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -715,6 +752,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -734,6 +772,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "dose2",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -753,6 +792,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "dose2",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -772,6 +812,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -791,6 +832,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -810,6 +852,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa Descalvado",
             gravidade: "Média",
+            vacinadoCovid: "dose2",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -829,6 +872,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa Ibitinga",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -848,6 +892,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -867,6 +912,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa Descalvado",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -886,6 +932,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa Descalvado",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -905,6 +952,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "nao",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -924,6 +972,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "H.E. Américo Brasiliense",
             gravidade: "Média",
+            vacinadoCovid: "dose2",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -943,6 +992,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "alta médica",
             gravidade: "Média",
+            vacinadoCovid: "dose2",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -962,6 +1012,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -981,6 +1032,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Carlos Fernando Malzoni",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1000,6 +1052,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "H.E. Américo Brasiliense",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1019,6 +1072,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1038,6 +1092,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Alta médica",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1057,6 +1112,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "UPA Santa Felícia",
             gravidade: "Alta",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1076,6 +1132,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1095,6 +1152,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1114,6 +1172,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1133,6 +1192,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1152,6 +1212,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Paciente evadido",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1171,6 +1232,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1190,6 +1252,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1209,6 +1272,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1228,6 +1292,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1247,6 +1312,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "H.P. Caibar Schutel",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1266,6 +1332,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Emilio Ribas",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1285,6 +1352,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1304,6 +1372,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1323,6 +1392,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1342,6 +1412,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1361,6 +1432,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1380,6 +1452,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Vila Penteado",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1395,10 +1468,11 @@ const dummyData =
             multiplicidade: 0,
         },
         prontuario: {
-            sintomas: "Síndrome Gripal",
+            sintomas: "Síndrome gripal",
             veioAObito: false,
             transferencia: "UPA Santa Felícia",
             gravidade: "Alta",
+            vacinadoCovid: "nao",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1416,8 +1490,9 @@ const dummyData =
         prontuario: {
             sintomas: "Síndrome gripal",
             veioAObito: true,
-            transferencia: "false se aplica",
+            transferencia: "Não se aplica",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1437,6 +1512,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Covid-19 Mun. Araraquara",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1452,10 +1528,11 @@ const dummyData =
             multiplicidade: 0,
         },
         prontuario: {
-            sintomas: "Síndrome Gripal",
+            sintomas: "Síndrome gripal",
             veioAObito: false,
             transferencia: "",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1475,6 +1552,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1494,6 +1572,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1513,6 +1592,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Covid-19 Mun. Araraquara",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1532,6 +1612,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "UPA Santa Felícia",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1551,6 +1632,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa Itápolis",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1570,6 +1652,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1585,10 +1668,11 @@ const dummyData =
             multiplicidade: 0,
         },
         prontuario: {
-            sintomas: "Síndrome Gripal",
+            sintomas: "Síndrome gripal",
             veioAObito: false,
             transferencia: "Alta médica",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1608,6 +1692,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1627,6 +1712,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1646,6 +1732,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1665,6 +1752,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1684,6 +1772,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Alta médica",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1703,6 +1792,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1722,6 +1812,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1741,6 +1832,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "UPA Santa Felícia",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1760,6 +1852,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Paciente evadido",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1779,6 +1872,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1798,6 +1892,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "UPA Santa Felícia",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1817,6 +1912,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "dose1",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1836,6 +1932,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Alta médica",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1855,6 +1952,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Alta médica",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1874,6 +1972,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1893,6 +1992,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1912,6 +2012,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "UPA Santa Felícia",
             gravidade: "Alta",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1931,6 +2032,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa Descalvado",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1950,6 +2052,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa Descalvado",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -1969,6 +2072,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Alta médica",
             gravidade: "Alta",
+            vacinadoCovid: "dose2",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -1988,6 +2092,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Carlos Fernando Malzoni",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -2007,6 +2112,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Alta",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -2026,6 +2132,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -2045,6 +2152,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2064,6 +2172,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
@@ -2083,6 +2192,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2102,6 +2212,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "UPA Santa Felícia",
             gravidade: "Média",
+            vacinadoCovid: "nao",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2121,6 +2232,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2140,6 +2252,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "H.E. Américo Brasiliense",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2159,6 +2272,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "",
             gravidade: "Média",
+            vacinadoCovid: "dose1",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2178,6 +2292,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2197,6 +2312,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Escola - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2216,6 +2332,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "UPA Santa Felícia",
             gravidade: "Alta",
+            vacinadoCovid: "dose2",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2233,8 +2350,9 @@ const dummyData =
         prontuario: {
             sintomas: "Padrão",
             veioAObito: true,
-            transferencia: "false se aplica",
+            transferencia: "Não se aplica",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2254,6 +2372,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2273,6 +2392,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2292,6 +2412,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Santa Casa da Misericórdia - São Carlos",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2311,6 +2432,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "Hospital Covid-19 Municip. Araraquara",
             gravidade: "Alta",
+            vacinadoCovid: "dose2",
             possuiComorbidades: true,
         },
         atendimento: {
@@ -2330,6 +2452,7 @@ const dummyData =
             veioAObito: false,
             transferencia: "H.P. Caibar Schutel",
             gravidade: "Média",
+            vacinadoCovid: "indef",
             possuiComorbidades: false,
         },
         atendimento: {
