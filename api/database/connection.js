@@ -8,6 +8,7 @@ const Atendimento = require('../models/atendimento');
 const Prontuario = require('../models/prontuario');
 const Usuario = require("../models/usuario");
 const dummyData = require("./dummydata");
+const keys = require("./keys");
 
 // Constants
 const RETRY_CONNECTION_TIMER = 10 * 1e3;
@@ -69,7 +70,7 @@ async function createDummyData() {
 // Connection to database
 async function trySyncDatabase() {
     try {
-        const resultado = await database.sync({ force: true });
+        const resultado = await database.sync({ force: keys.isDebug });
         console.log("[DB] Database synchronized!");
         console.log(resultado.models);
     } catch (err) {
@@ -86,7 +87,7 @@ async function tryDatabaseConnection() {
             isConnected = true;
             await createRootUser();
 
-            if (process.env.DEBUG) {
+            if (keys.isDebug) {
                 console.log("[DB] Creating dummy data");
                 await createDummyData();
                 console.log("[DB] Finished creating dummy data");

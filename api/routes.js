@@ -29,6 +29,7 @@ router.get("/tables", ensureAuthenticated, async (req, res) => {
 
 router.get("/is-database-connected", ensureAuthenticated, (req, res) => {
   console.log("GET /is-database-connected");
+  console.log("DEBUG MODE: " + process.env.DEBUG);
 
   res.json(isDatabaseConnected());
 });

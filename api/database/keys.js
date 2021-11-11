@@ -4,4 +4,5 @@ module.exports = {
     mysqlPass: process.env.MYSQL_PASS,
     mysqlName: process.env.MYSQL_NAME,
     mysqlPort: process.env.MYSQL_PORT,
+    isDebug: process.env.DEBUG === 'true',
 };

@@ -4,7 +4,7 @@
     flex-direction: column;
 
     .dashboardWrapper {
-        width: 1680px;
+        max-width: 1680px;
         margin: auto;
         padding: 10px 20px;
         display: flex;
