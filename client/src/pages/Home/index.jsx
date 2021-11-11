@@ -8,7 +8,6 @@ export function Home() {
         <div className={styles.homeWrapper}>
             <div className={styles.dashboardWrapper}>
                 <h1>Home</h1>
-                <Link to="/cadastro">Cadastro</Link>
             </div>
         </div>
     );

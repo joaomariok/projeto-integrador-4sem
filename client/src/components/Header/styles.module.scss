@@ -28,7 +28,8 @@
 
         .headerItem {
             text-decoration: none;
-            font-size: medium;
+            font-size: large;
+            font-weight: bold;
             color: #E1E1E6;
             margin: 0 10px;
         
@@ -36,6 +37,12 @@
                 filter: brightness(0.9);
                 border-bottom: 1px solid #E1E1E6;
             }
+        }
+
+        .verticalSeparator {
+            height: 30px;
+            border-left: 2px solid #484848;
+            margin: auto 5px;
         }
     }
 

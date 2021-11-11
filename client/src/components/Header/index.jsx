@@ -17,15 +17,19 @@ export function Header() {
                 <Link to="/" className={styles.headerLogo}>Home</Link>
             </h1>
             <div className={styles.itemWrapper}>
-                <h2>
-                    <Link to="/cadastro" className={styles.headerItem}>Cadastro</Link>
-                </h2>
-                <h2>
-                    <Link to="/grafico/horasdeespera" className={styles.headerItem}>Horas de espera</Link>
-                </h2>
-                <h2>
-                    <Link to="/grafico/permaneciaporgravidade" className={styles.headerItem}>Permanecia por Gravidade</Link>
-                </h2>
+                <Link to="/cadastro" className={styles.headerItem}>
+                    Cadastro de novo paciente
+                </Link>
+                {/* <h2 className={styles.verticalSeparator}>|</h2> */}
+                <div className={styles.verticalSeparator} ></div>
+                <Link to="/grafico/horasdeespera" className={styles.headerItem}>
+                    Ocorrências por Faixa de permanência
+                </Link>
+                {/* <h2 className={styles.verticalSeparator}>|</h2> */}
+                <div className={styles.verticalSeparator} ></div>
+                <Link to="/grafico/permaneciaporgravidade" className={styles.headerItem}>
+                    Permanência por Gravidade
+                </Link>
             </div>
             <button onClick={handleLogout}>Logout</button>
         </header>

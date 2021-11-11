@@ -37,13 +37,13 @@ export function GraficoHorasDeEspera() {
 
         for (let i = 0; i < labels.length; i++) {
             if (i === 0) {
-                labels[i] = `Até ${list[i]}h`;
+                labels[i] = `Até ${list[i]}h (${permanencias[i]}/${valores.length})`;
             }
             else if (i === labels.length - 1) {
-                labels[i] = `Mais de ${list[i - 1]}h`;
+                labels[i] = `Mais de ${list[i - 1]}h (${permanencias[i]}/${valores.length})`;
             }
             else {
-                labels[i] = `Entre ${list[i - 1]}h e ${list[i]}h`;
+                labels[i] = `Entre ${list[i - 1]}h e ${list[i]}h (${permanencias[i]}/${valores.length})`;
             }
         }
 
@@ -56,7 +56,7 @@ export function GraficoHorasDeEspera() {
 
     function getFormattedTime(min) {
         const hours = Math.floor(min / 60);
-        const minutes = Math.round(min % 60);
+        const minutes = Math.floor(min % 60);
 
         return `${hours}h ${minutes}min`;
     }
@@ -107,14 +107,26 @@ export function GraficoHorasDeEspera() {
         scales: {
             x: {
                 grid: {
-                    color: "#8D8D99"
+                    color: "transparent"
+                },
+                ticks: {
+                    font: {
+                        size: 16
+                    },
                 }
             },
             y: {
                 beginAtZero: true,
                 grid: {
-                    color: "#8D8D99"
-                }
+                    color: "#383838"
+                },
+                ticks: {
+                    stepSize: 2,
+                    maxTicksLimit: 21,
+                    font: {
+                        size: 16
+                    },
+                },
             }
         },
         plugins: {
@@ -127,7 +139,7 @@ export function GraficoHorasDeEspera() {
     return (
         <div className={styles.contentWrapper}>
             <h1>Gráfico de ocorrências por faixa de permanência</h1>
-            <h2>Média de permanência: {getFormattedTime(media)}</h2>
+            <h2>Média de permanência: [ {getFormattedTime(media)} ] em [ {valores.length} ] casos</h2>
             <Bar className={styles.chart} data={data} options={options}/>
         </div>
     );

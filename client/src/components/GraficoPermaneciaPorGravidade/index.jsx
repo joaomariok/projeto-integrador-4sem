@@ -79,13 +79,26 @@ export function GraficoPermaneciaPorGravidade() {
         scales: {
             x: {
                 grid: {
-                    color: "#8D8D99"
+                    color: "transparent"
+                },
+                ticks: {
+                    font: {
+                        size: 16
+                    },
                 }
             },
             y: {
                 beginAtZero: true,
                 grid: {
-                    color: "#8D8D99"
+                    color: "#383838"
+                },
+                ticks: {
+                    callback: (val, index) => { return (val + "h") },
+                    stepSize: 2,
+                    maxTicksLimit: 21,
+                    font: {
+                        size: 16
+                    },
                 }
             }
         },
