@@ -13,6 +13,9 @@ export function Cadastro() {
     "Síndrome respiratória",
     "Síndrome respiratória aguda",
     "Sistema renal",
+    "Desconhecido",
+    "Não se aplica",
+    "Outros"
   ];
 
   const listaUnidades = [
@@ -23,13 +26,15 @@ export function Cadastro() {
     "Hospital Emilio Ribas",
     "Hospital Escola - São Carlos",
     "Hospital Vila Penteado",
-    "Não se aplica",
     "Paciente evadido",
     "Santa Casa da Misericórdia - São Carlos",
     "Santa Casa Descalvado",
     "Santa Casa Ibitinga",
     "Hospital Carlos Fernando Malzoni",
     "UPA Santa Felícia",
+    "Desconhecido",
+    "Não se aplica",
+    "Outros"
   ];
 
   const [formData, setFormData] = useState({
