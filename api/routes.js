@@ -49,11 +49,11 @@ router.post("/new-record", ensureAuthenticated, async (req, res) => {
   console.log("POST /new-record");
   
   const {
-    identMultiplicidade,
+    multiplicidade,
     entrada,
     saida,
     idade,
-    sexo,
+    genero,
     covid,
     gravidade,
     sintoma,
@@ -63,31 +63,29 @@ router.post("/new-record", ensureAuthenticated, async (req, res) => {
   } = req.body;
 
   console.log(req.body);
-
-  // try-catch?
   
-  // const paciente = await Paciente.create({
-  //   idade: idade,
-  //   genero: sexo,
-  //   multiplicidade: identMultiplicidade
-  // });
+  const paciente = await Paciente.create({
+    idade: idade,
+    genero: genero,
+    multiplicidade: multiplicidade
+  });
 
-  // const prontuario = await Prontuario.create({
-  //   paciente_id: paciente.id,
-  //   sintomas: sintoma,
-  //   veioAObito: obito,
-  //   transferencia: unidade,
-  //   gravidade: gravidade,
-  //   possuiComorbidades: comorbidade
-  // });
+  const prontuario = await Prontuario.create({
+    paciente_id: paciente.id,
+    sintomas: sintoma,
+    veioAObito: obito,
+    transferencia: unidade,
+    gravidade: gravidade,
+    vacinadoCovid: covid,
+    possuiComorbidades: comorbidade
+  });
   
-  // const atendimento = Atendimento.create({
-  //   horaEntrada: entrada,
-  //   horaSaida: saida,
-  //   permanencia: permanencia, // pegar pela hora de saida menos a de entrada
-  //   paciente_id: paciente.id,
-  //   prontuario_id: prontuario.id
-  // });
+  const atendimento = await Atendimento.create({
+    horaEntrada: entrada,
+    horaSaida: saida,
+    paciente_id: paciente.id,
+    prontuario_id: prontuario.id
+  });
 
   res.status(200).json();
 }); 

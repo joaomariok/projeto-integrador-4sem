@@ -28,6 +28,9 @@ const Prontuario = database.define('prontuario', {
     gravidade: {
         type: Sequelize.STRING(6),
     },
+    vacinadoCovid: {
+        type: Sequelize.STRING(5),
+    },
     possuiComorbidades: {
         type: Sequelize.BOOLEAN,
     }

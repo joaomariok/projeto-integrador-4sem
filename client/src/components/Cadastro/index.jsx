@@ -3,65 +3,120 @@ import api from '../../services/api';
 import styles from './styles.module.scss'
 
 export function Cadastro() {
+
+  const listaSintomas = [
+    "Cardiologia",
+    "Neurologia/Neurocirurgia",
+    "Padrão",
+    "Psiquiatria",
+    "Síndrome gripal",
+    "Síndrome respiratória",
+    "Síndrome respiratória aguda",
+    "Sistema renal",
+    "Desconhecido",
+    "Não se aplica",
+    "Outros"
+  ];
+
+  const listaUnidades = [
+    "Alta a pedido",
+    "Alta médica",
+    "H.E. Américo Brasiliense",
+    "H.P. Caibar Schutel",
+    "Hospital Emilio Ribas",
+    "Hospital Escola - São Carlos",
+    "Hospital Vila Penteado",
+    "Paciente evadido",
+    "Santa Casa da Misericórdia - São Carlos",
+    "Santa Casa Descalvado",
+    "Santa Casa Ibitinga",
+    "Hospital Carlos Fernando Malzoni",
+    "UPA Santa Felícia",
+    "Desconhecido",
+    "Não se aplica",
+    "Outros"
+  ];
+
   const [formData, setFormData] = useState({
-    identMultiplicidade: '',
+    multiplicidade: 0,
     entrada: '',
     saida: '',
-    // permanencia: '',
-    idade: '',
-    sexo: 'notinfo',
-    covid: 'covidNao',
-    gravidade: 'gravidadeBaixa',
-    sintoma: '',
-    comorbidade: 'comobirdadesDesconhecido',
+    idade: 0,
+    genero: 'N',
+    covid: 'indef',
+    gravidade: 'Baixa',
+    sintoma: listaSintomas[0],
+    comorbidade: false,
     obito: false,
-    unidade: ''
-  })
+    unidade: listaUnidades[0]
+  });
 
-  const checkValues = () => {
-    if (formData.idade < 0) {
-      alert('A idade tem que ser maior que 0')
-      return
+  const isDataValid = () => {
+    let dataValid = true;
+
+    if (formData.idade <= 0 || formData.idade > 100) {
+      alert('A idade tem que ser maior que 0 e menor que 100');
+      dataValid = false;
     }
-    // quais valores vamos checar?
-    // entrada e saída tem limite de dias?
-    // saida pode ser maior que hoje?
-    // algum campo não pode ser nulo?
+
+    if (formData.entrada == '' || formData.saida == '') {
+      alert('Data não pode estar vazia');
+      dataValid = false;
+    }
+
+    if (new Date(formData.saida) <= new Date(formData.entrada)) {
+      alert('O momento de saída deve ser depois do de entrada');
+      dataValid = false;
+    }
+
+    if (new Date(formData.saida) > Date.now()) {
+      alert('O momento de saída deve ser antes de agora');
+      dataValid = false;
+    }
+
+    if (new Date(formData.entrada) > Date.now()) {
+      alert('O momento de entrada deve ser antes de agora');
+      dataValid = false;
+    }
+
+    return dataValid;
   }
 
   const clearForm = () => {
     setFormData({
-      identMultiplicidade: '',
+      multiplicidade: 0,
       entrada: '',
       saida: '',
-      // permanencia: '',
-      idade: '',
-      sexo: 'notinfo',
-      covid: 'covidNao',
-      gravidade: 'gravidadeBaixa',
-      sintoma: '',
-      comorbidade: 'comobirdadesDesconhecido',
+      idade: 0,
+      genero: 'N',
+      covid: 'indef',
+      gravidade: 'Baixa',
+      sintoma: listaSintomas[0],
+      comorbidade: false,
       obito: false,
-      unidade: ''
+      unidade: listaUnidades[0]
     })
   }
 
   async function sendForm(e) {
     e.preventDefault();
-    checkValues();
+
+    if (!isDataValid()) {
+      alert("Reveja validade dos dados do registro.");
+      return;
+    };
 
     const newRecord = {
-      identMultiplicidade: formData.identMultiplicidade,
+      multiplicidade: parseInt(formData.multiplicidade),
       entrada: formData.entrada,
       saida: formData.saida,
-      // permanencia: formData.permanencia,
-      idade: formData.idade,
-      sexo: formData.sexo,
+      idade: parseInt(formData.idade),
+      genero: formData.genero,
       covid: formData.covid,
       gravidade: formData.gravidade,
       sintoma: formData.sintoma,
-      comorbidade: formData.comorbidade,
-      obito: formData.obito,
+      comorbidade: formData.comorbidade === 'true',
+      obito: formData.obito === 'true',
       unidade: formData.unidade
     }
 
@@ -78,150 +133,219 @@ export function Cadastro() {
       alert("Status não reconhecido");
     }
 
-    clearForm()
+    clearForm();
   }
 
   return (
     <div className={styles.contentWrapper}>
       <form className={styles.form}>
-        <label className={styles.label}>
+        <label htmlFor="identification" className={styles.label}>
           Identificação de multiplicidade:
         </label>
         <input
-          type="text"
+          id="identification" 
+          name="identification"
+          type="number"
           className={styles.input}
-          onChange={(e) => setFormData({ ...formData, identMultiplicidade: e.target.value })}
-          value={formData.identMultiplicidade}
+          onChange={(e) => setFormData({ ...formData, multiplicidade: e.target.value })}
+          value={formData.multiplicidade}
         />
+
         <div className={styles.line} />
 
-        <label className={styles.label}>
-          Entrada:
+        <label htmlFor="checkInTime" className={styles.label}>
+          Hora de entrada:
         </label>
         <input
+          id="checkInTime" 
+          name="checkInTime"
           type="datetime-local"
           className={styles.input}
           onChange={(e) => setFormData({ ...formData, entrada: e.target.value })}
           value={formData.entrada}
         />
+
         <div className={styles.line} />
 
-        <label className={styles.label}>
-          Saída:
+        <label htmlFor="checkOutTime" className={styles.label}>
+          Hora de saída:
         </label>
         <input
+          id="checkOutTime" 
+          name="checkOutTime"
           type="datetime-local"
           className={styles.input}
           onChange={(e) => setFormData({ ...formData, saida: e.target.value })}
           value={formData.saida}
         />
+
         <div className={styles.line} />
 
-        {/* <label className={styles.label}>
-          Tempo de permanência:
-        </label>
-        <input
-          type="time"
-          className={styles.input}
-          onChange={(e) => setFormData({ ...formData, permanencia: e.target.value })}
-          value={formData.permanencia}
-        />
-        <div className={styles.line} /> */}
-
-        <label className={styles.label}>
+        <label htmlFor="age" className={styles.label}>
           Idade:
         </label>
         <input
+          id="age" 
+          name="age"
           type="number"
+          min="1"
+          max="100"
           className={styles.input}
           onChange={(e) => setFormData({ ...formData, idade: e.target.value })}
           value={formData.idade}
         />
+
         <div className={styles.line} />
 
-        <label className={styles.label}>
-          Sexo:
+        <label htmlFor="gender" className={styles.label} >
+          Gênero:
         </label>
-        <div onChange={(e) => setFormData({ ...formData, sexo: e.target.value })}>
-          <label className={styles.radioLabel} htmlFor="masc">
-            <input id="masc" type="radio" value="m" name="sexo" className={styles.radioButton} />
-            Masculino
-          </label>
-          <label className={styles.radioLabel} htmlFor="fem">
-            <input id="fem" type="radio" value="f" name="sexo" className={styles.radioButton} />
-            Feminino
-          </label>
-          <label className={styles.radioLabel} htmlFor="notinfo">
-            <input id="notinfo" type="radio" value="naoInfo" name="sexo" className={styles.radioButton} defaultChecked={true} />
-            Não informado
-          </label>
-        </div>
-        <div className={styles.line} />
-
-        <label className={styles.label}>
-          Vacinado COVID?
-        </label>
-        <select className={styles.select} onChange={(e) => setFormData({ ...formData, covid: e.target.value })} value={formData.covid}>
-          <option className={styles.option} value="covid2dose">2ª DOSE</option>
-          <option className={styles.option} value="covid1dose">1ª DOSE</option>
-          <option className={styles.option} value="covidIndefinido">INDEFINIDO</option>
-          <option className={styles.option} value="covidNao">NÃO</option>
+        <select
+          id="gender" 
+          name="gender"
+          className={styles.select}
+          onChange={(e) => setFormData({ ...formData, genero: e.target.value })}
+          value={formData.genero}
+        >
+          <option id="M" value="M">MASCULINO</option>
+          <option id="F" value="F">FEMININO</option>
+          <option id="N" value="N">NÃO INFORMADO</option>
         </select>
+
         <div className={styles.line} />
 
-        <label className={styles.label}>
+        <label htmlFor="covid" className={styles.label}>
+          Vacinado contra COVID?
+        </label>
+        <select 
+          id="covid" 
+          name="covid"
+          className={styles.select} 
+          onChange={(e) => setFormData({ ...formData, covid: e.target.value })} 
+          value={formData.covid}
+        >
+          <option id="dose3" className={styles.option} value="dose3">3ª DOSE</option>
+          <option id="dose2" className={styles.option} value="dose2">2ª DOSE</option>
+          <option id="dose1" className={styles.option} value="dose1">1ª DOSE</option>
+          <option id="nao" className={styles.option} value="nao">NÃO</option>
+          <option id="indef" className={styles.option} value="indef">INDEFINIDO</option>
+        </select>
+
+        <div className={styles.line} />
+
+        <label htmlFor="gravidade" className={styles.label}>
           Gravidade:
         </label>
-        <select className={styles.select} onChange={(e) => setFormData({ ...formData, gravidade: e.target.value })} value={formData.gravidade}>
-          <option className={styles.option} value="gravidadeBaixa">BAIXA</option>
-          <option className={styles.option} value="gravidadeMedia">MÉDIA</option>
-          <option className={styles.option} value="gravidadeAlta">ALTA</option>
+        <select 
+          id="gravidade" 
+          name="gravidade"
+          className={styles.select} 
+          onChange={(e) => setFormData({ ...formData, gravidade: e.target.value })} 
+          value={formData.gravidade}
+        >
+          <option id="Baixa" className={styles.option} value="Baixa">BAIXA</option>
+          <option id="Média" className={styles.option} value="Média">MÉDIA</option>
+          <option id="Alta" className={styles.option} value="Alta">ALTA</option>
         </select>
+
         <div className={styles.line} />
 
-        <label className={styles.label}>
+        <label htmlFor="sintoma" className={styles.label}>
           Sintoma (Grupo):
         </label>
-        <input
+        <select 
+          id="sintoma" 
+          name="sintoma"
+          className={styles.select} 
+          onChange={(e) => setFormData({ ...formData, sintoma: e.target.value })} 
+          value={formData.sintoma}
+        >
+          {
+            listaSintomas.map((item, index) => 
+              <option 
+                id={"sintoma" + index}
+                key={"sintoma" + index} 
+                className={styles.option} 
+                value={item}>{item.toUpperCase()}
+              </option>
+            )
+          }
+        </select>
+        {/* <input
           type="text"
           className={styles.input}
           onChange={(e) => setFormData({ ...formData, sintoma: e.target.value })}
           value={formData.sintoma}
-        />
+        /> */}
+
         <div className={styles.line} />
 
-        <label className={styles.label}>
+        <label htmlFor="comorbidade" className={styles.label}>
           Possui comorbidades?
         </label>
-        <select className={styles.select} onChange={(e) => setFormData({ ...formData, comorbidade: e.target.value })} value={formData.comorbidade}>
-          <option className={styles.option} value="comobirdadesDesconhecido">DESCONHECIDO</option>
-          <option className={styles.option} value="comobirdadesNao">NÃO</option>
-          <option className={styles.option} value="comobirdadesSim">SIM</option>
+        <select 
+          id="comorbidade" 
+          name="comorbidade"
+          className={styles.select} 
+          onChange={(e) => setFormData({ ...formData, comorbidade: e.target.value })} 
+          value={formData.comorbidade}
+        >
+          {/* <option className={styles.option} value={false}>DESCONHECIDO</option> */}
+          <option id="comorbidadeNao" className={styles.option} value={false}>NÃO</option>
+          <option id="comorbidadeSim" className={styles.option} value={true}>SIM</option>
         </select>
+
         <div className={styles.line} />
 
-        <label className={styles.label}>
-          Obito dentro da unidade?
+        <label htmlFor="obito" className={styles.label}>
+          Óbito dentro da unidade?
         </label>
-        <select className={styles.select} onChange={(e) => setFormData({ ...formData, obito: e.target.value })} value={formData.obito}>
-          <option className={styles.option} value={false}>NÃO</option>
-          <option className={styles.option} value={true}>SIM</option>
+        <select 
+          id="obito" 
+          name="obito"
+          className={styles.select} 
+          onChange={(e) => setFormData({ ...formData, obito: e.target.value })} 
+          value={formData.obito}
+        >
+          <option id="obitoNao" className={styles.option} value={false}>NÃO</option>
+          <option id="obitoSim" className={styles.option} value={true}>SIM</option>
         </select>
+
         <div className={styles.line} />
 
-        <label className={styles.label}>
+        <label htmlFor="transferencia" className={styles.label}>
           Unidade de transferência:
         </label>
-        <input
+        <select 
+          id="transferencia" 
+          name="transferencia"
+          className={styles.select} 
+          onChange={(e) => setFormData({ ...formData, unidade: e.target.value })} 
+          value={formData.unidade}
+        >
+          {
+            listaUnidades.map((item, index) => 
+              <option 
+                id={"transferencia" + index} 
+                key={"transferencia" + index} 
+                className={styles.option} 
+                value={item}>{item}
+              </option>
+            )
+          }
+        </select>
+        {/* <input
           type="text"
           className={styles.input}
           onChange={(e) => setFormData({ ...formData, unidade: e.target.value })}
           value={formData.unidade}
-        />
+        /> */}
+
         <div className={styles.line} />
+
         <button
           className={styles.submitButton}
-          onClick={(e) => sendForm(e)}>Cadastrar</button>
+          onClick={(e) => sendForm(e)}>CADASTRAR</button>
       </form>
     </div>
   );

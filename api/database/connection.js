@@ -35,10 +35,6 @@ async function createRootUser() {
 }
 
 async function createDummyEntry(_paciente, _prontuario, _atendimento) {
-    // console.log(_paciente);
-    // console.log(_prontuario);
-    // console.log(_atendimento);   
-
     const paciente = await Paciente.create({
         idade: _paciente.idade,
         genero: _paciente.genero,
@@ -51,6 +47,7 @@ async function createDummyEntry(_paciente, _prontuario, _atendimento) {
         veioAObito: _prontuario.veioAObito,
         transferencia: _prontuario.transferencia,
         gravidade: _prontuario.gravidade,
+        vacinadoCovid: _prontuario.vacinadoCovid,
         possuiComorbidades: _prontuario.possuiComorbidades
     });
   
