@@ -3,7 +3,7 @@ const md5 = require("md5");
 const { sign } = require("jsonwebtoken");
 
 const { ensureAuthenticated } = require("./middleware/ensureAuthenticated");
-const { isDatabaseConnected } = require('./database/connection');
+const { isDatabaseConnected, createDummyData } = require('./database/connection');
 
 // Import models
 const database = require('./database');
@@ -16,24 +16,37 @@ const router = Router();
 
 // ==== Database routes ====
 
-router.get("/tables", ensureAuthenticated, (req, res) => {
+router.get("/tables", ensureAuthenticated, async (req, res) => {
   if (!isDatabaseConnected()) return res.status(502).json();
 
+  console.log("GET /tables");
+
   sqlQuery = "SHOW TABLES";
-  database
-    .query(sqlQuery)
-    .then((result) => {
-      console.log("GET /tables");
-      res.json(result);
-    });
+  const [ result, temp ] = await database.query(sqlQuery);
+
+  res.json(result);
 });
 
-router.get("/database-connected", ensureAuthenticated, (req, res) => {
-  res.json(isDatabaseConnected() ? "Banco conectado" : "Não foi possível realizar conexão");
+router.get("/is-database-connected", ensureAuthenticated, (req, res) => {
+  console.log("GET /is-database-connected");
+
+  res.json(isDatabaseConnected());
+});
+
+router.post("/create-dummy-data", ensureAuthenticated, async (req, res) => {
+  if (!isDatabaseConnected()) return res.status(502).json();
+
+  console.log("POST /create-dummy-data");
+
+  await createDummyData();
+
+  return res.status(200).json();
 });
 
 router.post("/new-record", ensureAuthenticated, async (req, res) => {
   if (!isDatabaseConnected()) return res.status(502).json();
+
+  console.log("POST /new-record");
   
   const {
     identMultiplicidade,
@@ -82,6 +95,8 @@ router.post("/new-record", ensureAuthenticated, async (req, res) => {
 router.get("/permanence", ensureAuthenticated, async (req, res) => {
   if (!isDatabaseConnected()) return res.status(502).json();
 
+  console.log("GET /permanence");
+
   // const query = "SELECT TIMESTAMPDIFF(MINUTE, horaEntrada, horaSaida) AS permanencia FROM atendimentos AS atendimento"
   // const [ data, temp ] = await database.query(query);
 
@@ -99,13 +114,13 @@ router.get("/permanence", ensureAuthenticated, async (req, res) => {
     ]
   });
 
-  console.log("GET /permanence");
-
   res.status(200).json(data);
 });
 
-router.get("/severityyandpermanence", ensureAuthenticated, async (req, res) => {
+router.get("/severity-and-permanence", ensureAuthenticated, async (req, res) => {
   if (!isDatabaseConnected()) return res.status(502).json();
+
+  console.log("GET /severity-and-permanence");
 
   // == QUERY: ==
   // SELECT TIMESTAMPDIFF(MINUTE, atendimentos.horaEntrada, atendimentos.horaSaida) AS permanencia,
@@ -117,14 +132,14 @@ router.get("/severityyandpermanence", ensureAuthenticated, async (req, res) => {
   const query = "SELECT TIMESTAMPDIFF(MINUTE, atendimentos.horaEntrada, atendimentos.horaSaida) AS permanencia, prontuarios.gravidade AS gravidade FROM atendimentos INNER JOIN prontuarios ON atendimentos.prontuario_id = prontuarios.id"
   const [ data, temp ] = await database.query(query);
 
-  console.log("GET /severityyandpermanence");
-
   res.status(200).json(data);
 });
 
 // ==== Login routes ====
 
 router.post("/signup", async (req, res) => {
+  console.log("POST /signup");
+
   const { user, password, rootPassword } = req.body;
 
   // Check empty fields
@@ -173,6 +188,8 @@ router.post("/signup", async (req, res) => {
 });
 
 router.post("/login", async (req, res) => {
+  console.log("POST /login");
+
   const { user, password } = req.body;
 
   // Check empty fields

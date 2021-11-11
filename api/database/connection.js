@@ -63,12 +63,10 @@ async function createDummyEntry(_paciente, _prontuario, _atendimento) {
 }
 
 async function createDummyData() {
-    console.log("[DB] Creating dummy data");
     dummyData.forEach(async (registro, index) => {
         console.log(`[DB] Creating dummy entry ${index + 1}/${dummyData.length}`);
         await createDummyEntry(registro.paciente, registro.prontuario, registro.atendimento);
     });
-    console.log("[DB] Finished creating dummy data");
 }
 
 // Connection to database
@@ -92,7 +90,9 @@ async function tryDatabaseConnection() {
             await createRootUser();
 
             if (process.env.DEBUG) {
+                console.log("[DB] Creating dummy data");
                 await createDummyData();
+                console.log("[DB] Finished creating dummy data");
             }
 
             break;
@@ -104,4 +104,4 @@ async function tryDatabaseConnection() {
     }
 }
 
-module.exports = { isDatabaseConnected, tryDatabaseConnection };
+module.exports = { isDatabaseConnected, tryDatabaseConnection, createDummyData };
