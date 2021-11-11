@@ -28,7 +28,7 @@ export function GraficoPermaneciaPorGravidade() {
     }
 
     useEffect(async () => {
-        const { data } = await api.get("/severityyandpermanence");
+        const { data } = await api.get("/severity-and-permanence");
         setList(data);
 
         const uniqueValues = [...new Set(data.map(item => item.gravidade))];
