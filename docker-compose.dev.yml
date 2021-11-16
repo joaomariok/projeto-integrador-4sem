@@ -24,8 +24,10 @@ services:
       - api
       - client
     restart: always
+    logging:
+      driver: none
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./router
     ports:
       - 3050:80
@@ -34,10 +36,13 @@ services:
     depends_on:
       - db
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./api
     restart: always
     env_file: ./.env
+    volumes:
+      - /app/node_modules
+      - ./api:/app
     environment:
       - MYSQL_HOST=$DB_HOST
       - MYSQL_USER=$DB_USER
@@ -47,10 +52,15 @@ services:
       - ROOT_USER=$ROOT_USERNAME
       - ROOT_PASS=$ROOT_PASSWORD
       - JWT_SECRET=$JWT_SECRET
-      - DEBUG=false
+      - DEBUG=true
 
   client:
     restart: always
     build:
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.dev
       context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
